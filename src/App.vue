@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router';
+import { RouterView } from 'vue-router';
+
+import { Header } from '@/components/common';
 </script>
 
 <template>
-  <header>
-    <nav>
-      <RouterLink to="/">Home</RouterLink>
-      <RouterLink to="/history">History</RouterLink>
-    </nav>
-  </header>
+  <Header />
 
-  <RouterView />
+  <main class="pt-8 pb-16 w-[90%] sm:w-[70%] md:w-[50%] lg:w-[40%] xl:w-[30%] mx-auto min-h-screen">
+    <RouterView />
+  </main>
 </template>
