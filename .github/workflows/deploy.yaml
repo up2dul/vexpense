@@ -11,9 +11,9 @@ on:
       - '**/*/__tests__'
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
-    name: Build and Publish to Cloudflare Pages
+    name: Build and Deploy to Cloudflare Pages
     permissions:
       contents: read
       deployments: write
@@ -21,25 +21,23 @@ jobs:
       matrix:
         node-version: [20]
     steps:
-      - name: Checkout
+      - name: 🛎️ Checkout
         uses: actions/checkout@v4
-
       # Install pnpm
-      - name: Install pnpm
+      - name: 📦 Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 9
       # Build
-      - name: Build
+      - name: 🔨 Build
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'pnpm'
       - run: pnpm install
       - run: pnpm build
-
-      # Publish
-      - name: Publish to Cloudflare Pages
+      # Deploy
+      - name: 🌎 Deploy to Cloudflare Pages
         uses: cloudflare/pages-action@v1
         with:
           apiToken: ${{ secrets.CF_API_TOKEN }}
@@ -48,7 +46,7 @@ jobs:
           directory: 'dist'
           # Optional: Enable this if you want to have GitHub Deployments triggered
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
-          # Optional: Switch what branch you are publishing to.
+          # Optional: Switch what branch you are deploying to.
           # By default this will be the branch which triggered this workflow
           branch: main
           # Optional: Change the Wrangler version, allows you to point to a specific version or a tag such as `beta`
