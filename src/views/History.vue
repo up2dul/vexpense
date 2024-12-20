@@ -1,6 +1,3 @@
 <template>
-  <main>
-    <h1>History</h1>
-  </main>
+  <h1>History</h1>
 </template>
-

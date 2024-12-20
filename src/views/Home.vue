@@ -1,5 +1,7 @@
+<script setup lang="ts">
+import { Balance } from '@/components/section';
+</script>
+
 <template>
-  <main>
-    <h1>Home</h1>
-  </main>
+  <Balance />
 </template>
